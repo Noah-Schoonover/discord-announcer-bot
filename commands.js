@@ -24,7 +24,7 @@ const TEST_COMMAND = {
   type: 1,
 };
 
-// Simple test command
+// Simple announce command
 const ANNOUNCE_COMMAND = {
   name: 'announce',
   description: 'Send announcement to the server',
@@ -34,7 +34,6 @@ const ANNOUNCE_COMMAND = {
       name: 'announcement',
       description: 'Announcement:',
       required: true,
-      choices: createCommandChoices(),
     },
   ],
   type: 1,
@@ -50,6 +49,7 @@ const CHALLENGE_COMMAND = {
       name: 'object',
       description: 'Pick your object',
       required: true,
+      choices: createCommandChoices(),
     },
   ],
   type: 1,
