@@ -45,6 +45,10 @@ app.post("/interactions", async function (req, res) {
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name } = data;
     console.log(data);
+    console.log(data.options);
+    const { options } = data;
+    console.log(options);
+    console.log(options.length)
 
     // "test" command
     if (name === "test") {
@@ -57,6 +61,21 @@ app.post("/interactions", async function (req, res) {
         },
       });
     }
+    
+    if (name === "announce") {
+      if (options.length != 1 || options[0].name != 'announcement') {
+        return;
+      }
+      // Send a message into the channel where command was triggered from
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: options[0].value,
+        },
+      });
+    }
+    
+    
   }
 });
 
