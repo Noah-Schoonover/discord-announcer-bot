@@ -49,11 +49,12 @@ app.post("/interactions", async function (req, res) {
       if (options.length != 1 || options[0].name != 'announcement') {
         return;
       }
+      console.log(options[0].value);
       // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          content: options[0].value,
+          content: 'test push ' + options[0].value,
         },
       });
     }
