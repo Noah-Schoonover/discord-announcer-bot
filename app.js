@@ -12,7 +12,6 @@ import {
   getRandomEmoji,
   DiscordRequest,
 } from "./utils.js";
-import { getShuffledOptions, getResult } from "./game.js";
 
 // Create an express app
 const app = express();
@@ -44,23 +43,7 @@ app.post("/interactions", async function (req, res) {
    */
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name } = data;
-    console.log(data);
-    console.log(data.options);
     const { options } = data;
-    console.log(options);
-    console.log(options.length)
-
-    // "test" command
-    if (name === "test") {
-      // Send a message into the channel where command was triggered from
-      return res.send({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: {
-          // Fetches a random emoji to send from a helper function
-          content: "hello world!!!! " + getRandomEmoji(),
-        },
-      });
-    }
     
     if (name === "announce") {
       if (options.length != 1 || options[0].name != 'announcement') {
