@@ -24,6 +24,22 @@ const TEST_COMMAND = {
   type: 1,
 };
 
+// Simple test command
+const ANNOUNCE_COMMAND = {
+  name: 'announce',
+  description: 'Send announcement to the server',
+  options: [
+    {
+      type: 3,
+      name: 'announcement',
+      description: 'Announcement:',
+      required: true,
+      choices: createCommandChoices(),
+    },
+  ],
+  type: 1,
+};
+
 // Command containing options
 const CHALLENGE_COMMAND = {
   name: 'challenge',
@@ -34,12 +50,11 @@ const CHALLENGE_COMMAND = {
       name: 'object',
       description: 'Pick your object',
       required: true,
-      choices: createCommandChoices(),
     },
   ],
   type: 1,
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND];
+const ALL_COMMANDS = [TEST_COMMAND, ANNOUNCE_COMMAND, CHALLENGE_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
